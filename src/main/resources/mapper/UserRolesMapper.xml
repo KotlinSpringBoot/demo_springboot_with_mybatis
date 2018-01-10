@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.easy.springboot.demo_springboot_with_mybatis.dao.UserRolesMapper">
+  <resultMap id="BaseResultMap" type="com.easy.springboot.demo_springboot_with_mybatis.model.UserRolesKey">
+    <id column="user_id" jdbcType="BIGINT" property="userId" />
+    <id column="roles_id" jdbcType="BIGINT" property="rolesId" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="com.easy.springboot.demo_springboot_with_mybatis.model.UserRolesKey">
+    delete from user_roles
+    where user_id = #{userId,jdbcType=BIGINT}
+      and roles_id = #{rolesId,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.easy.springboot.demo_springboot_with_mybatis.model.UserRolesKey">
+    insert into user_roles (user_id, roles_id)
+    values (#{userId,jdbcType=BIGINT}, #{rolesId,jdbcType=BIGINT})
+  </insert>
+  <insert id="insertSelective" parameterType="com.easy.springboot.demo_springboot_with_mybatis.model.UserRolesKey">
+    insert into user_roles
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="userId != null">
+        user_id,
+      </if>
+      <if test="rolesId != null">
+        roles_id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="userId != null">
+        #{userId,jdbcType=BIGINT},
+      </if>
+      <if test="rolesId != null">
+        #{rolesId,jdbcType=BIGINT},
+      </if>
+    </trim>
+  </insert>
+</mapper>
