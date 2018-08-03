@@ -20,6 +20,9 @@ apply plugin: 'kotlin-spring'
 apply plugin: 'eclipse'
 apply plugin: 'org.springframework.boot'
 apply plugin: 'io.spring.dependency-management'
+apply plugin: 'application'
+
+mainClassName="com.easy.springboot.demo_springboot_with_mybatis.DemoSpringbootWithMybatisApplicationKt"
 
 group = 'com.easy.springboot'
 version = '0.0.1-SNAPSHOT'
